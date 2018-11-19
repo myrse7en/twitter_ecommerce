@@ -7,5 +7,35 @@
 
 <!-- put content for this page into app_content block, not content block, as to not overwrite footer -->
 {% block app_content %}
-  <h1>Home</h1>
+  <div class="container">
+    <div class="extra-top-margin" class="row">
+      <div class="col-md-12">
+        <h1>E-Commerce Title</h1>
+      </div> <!-- ends col 12 for title -->
+    </div> <!-- ends row for title -->
+
+    <div class="row">
+      <div class="col-md-12">
+        <img class="header-img" src="http://placehold.it/800x250" alt="Placehoder Image">
+      </div> <!-- ends col 12 fir header image -->
+    </div> <!-- ends row for header image -->
+
+    <div class="row">
+      {% for k,v in products.items() %}
+        <div class="col-md-3">
+          <div class="card">
+            <div class="card-img-top">
+              <img class="card-img" src="{{ v.url }}" alt="Product">
+            </div>
+            <div class="card-title">{{ v.title }}</div>
+            <div class="card-subtitle">${{ v.price }}</div>
+            <div class="card-subtitle">{{ v.subtitle }}</div>
+            <div class="card-text">{{ v.desc }}</div>
+            <button class="btn btn-primnary" onClick="console.log({{ k }})">Add to Cart</button>
+          </div> <!-- ends card -->
+        </div> <!-- ends col 3 -->
+      {% endfor %}
+    </div> <!-- ends row -->
+
+  </div> <!-- ends container -->
 {% endblock %}
