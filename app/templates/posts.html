@@ -9,41 +9,39 @@
   <div class="container">
     <div class="row">
 
-      {% for k, v in people.items() %}
-        {% if v.name == name %}
-          <div class="col-md-4">
-            <div class="card">
-              <div class="card-img-top">
-                <img class="card-img" src="http://placehold.it/250x250" alt="Profile Pic">
-              </div>
-              <div class="card-title">{{ v.name }}</div>
-              <div class="card-subtitle">{{ v.age }}</div>
-              <div class="card-text">{{ v.bio }}</div>
-              <button class="btn btn-primary">Follow</button>
-            </div>
-          </div> <!-- ends col 4 -->
-        {% endif %}
-      {% endfor %}
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-img-top">
+            <img class="card-img" src="http://placehold.it/250x250" alt="Profile Pic">
+          </div>
+          <div class="card-title">{{ person.full_name }}</div>
+          <div class="card-subtitle">{{ person.age }}</div>
+          <div class="card-text">{{ person.bio }}</div>
+          <button class="btn btn-primary">Follow</button>
+        </div>
+      </div> <!-- ends col 4 -->
 
       <div class="col-md-7 offset-md-1">
-        <div class="row">
-          <div class="col-md-12">
-            {{ wtf.quick_form(form) }}
-          </div> <!-- ends col 12 -->
-        </div> <!-- ends row for form -->
-        {% for post in posts %}
-          {% if post.name == name %}
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="card">
-                    <div class="card-subtitle">{{ post.name }}</div>
-                    <div class="card-subtitle">{{ post.date }}</div>
-                    <div class="card-title">{{ post.tweet }}</div>
-                    <button class="btn btn-primary btn-like">Like</button>
-                  </div> <!-- ends card -->
-                </div> <!-- ends col 7 -->
-              </div> <!-- ends row for card -->
-          {% endif %}
+
+        {% if current_user.username == person.username %}
+          <div class="row">
+            <div class="col-md-12">
+              {{ wtf.quick_form(form) }}
+            </div> <!-- ends col 12 -->
+          </div> <!-- ends row for form -->
+        {% endif %}
+
+        {% for post in person.posts %}
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-subtitle">@{{ post.username }}</div>
+                <div class="card-subtitle">{{ post.date }}</div>
+                <div class="card-title">{{ post.tweet }}</div>
+                <button class="btn btn-primary btn-like">Like</button>
+              </div> <!-- ends card -->
+            </div> <!-- ends col 7 -->
+          </div> <!-- ends row for card -->
         {% endfor %}
       </div> <!-- ends col 7 -->
 
