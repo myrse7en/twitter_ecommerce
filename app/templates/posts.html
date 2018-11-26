@@ -32,14 +32,14 @@
           </div> <!-- ends col 12 -->
         </div> <!-- ends row for form -->
 
-        {% for k, v in posts.items() %}
-          {% if v.name == name %}
+        {% for post in posts %}
+          {% if post.name == name %}
               <div class="row">
                 <div class="col-md-12">
                   <div class="card">
-                    <div class="card-subtitle">{{ v.name }}</div>
-                    <div class="card-subtitle">{{ v.date }}</div>
-                    <div class="card-title">{{ v.tweet }}</div>
+                    <div class="card-subtitle">{{ post.name }}</div>
+                    <div class="card-subtitle">{{ post.date }}</div>
+                    <div class="card-title">{{ post.tweet }}</div>
                     <button class="btn btn-primary btn-like">Like</button>
                   </div> <!-- ends card -->
                 </div> <!-- ends col 7 -->
