@@ -35,6 +35,15 @@ class Post(db.Model):
     def __repr__(self):
         return 'Post {} by {}: {}'.format(self.id, self.name, self.tweet)
 
+class Product(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100))
+    price = db.Column(db.Float)
+    description = db.Column(db.String(500))
+    location = db.Column(db.String(50))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    pic_url = db.Column(db.String(200))
+    date = db.Column(db.DateTime, default=datetime.now().date())
 
 @login.user_loader
 def load_user(id):

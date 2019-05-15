@@ -21,17 +21,17 @@
     </div> <!-- ends row for header image -->
 
     <div class="row">
-      {% for k,v in products.items() %}
+      {% for product in products %}
         <div class="col-md-3">
           <div class="card">
             <div class="card-img-top">
-              <img class="card-img" src="{{ v.url }}" alt="Product">
+              <img class="card-img" src="{{ product.pic_url }}" alt="Product">
             </div>
-            <div class="card-title">{{ v.title }}</div>
-            <div class="card-subtitle">${{ v.price }}</div>
-            <div class="card-subtitle">{{ v.subtitle }}</div>
-            <div class="card-text">{{ v.desc }}</div>
-            <button class="btn btn-primnary" onClick="console.log({{ k }})">Add to Cart</button>
+            <div class="card-title">{{ product.title }}</div>
+            <div class="card-subtitle">${{ product.price }}</div>
+            <div class="card-subtitle">{{ product.location }}</div>
+            <div class="card-text">{{ product.description }}</div>
+            <button class="btn btn-primnary" onClick="console.log({{ product.id }})">Add to Cart</button>
           </div> <!-- ends card -->
         </div> <!-- ends col 3 -->
       {% endfor %}
